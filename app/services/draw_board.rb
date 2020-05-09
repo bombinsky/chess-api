@@ -43,7 +43,7 @@ class DrawBoard
   def draw_rows
     (0..7).to_a.reverse.each do |row_index|
       @row_index = row_index
-      print " #{ 8 - row_index } "
+      print " #{ row_index + 1 } "
       draw_cols
       print "\n"
     end
