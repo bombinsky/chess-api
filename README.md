@@ -31,8 +31,11 @@ When seeds are loaded you can simply create a game involving any available users
 Then you can create first move : ```MoveChessman.new(game, :F2, :F3).call```
 
 And few other :
+
 ```MoveChessman.new(game, :E7, :E5).call```
+
 ```MoveChessman.new(game, :G2, :G4).call```
+
 ```MoveChessman.new(game, :D8, :H4).call```
 
 And always display chessboard with : ```DrawBoard.new(game.board).call```
