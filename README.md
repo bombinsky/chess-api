@@ -28,9 +28,9 @@ When seeds are loaded you can simply create a game involving any available users
 
 ```game = CreateGame.new(creator: User.first, white_player: User.first, black_player: User.last).call```
 
-Then you can create first move : ```MoveChessman.new(game, :F2, :F3).call```
+Then you can create first moves like : 
 
-And few other :
+```MoveChessman.new(game, :F2, :F3).call```
 
 ```MoveChessman.new(game, :E7, :E5).call```
 
@@ -42,9 +42,9 @@ And always display chessboard with : ```DrawBoard.new(game.board).call```
 
 That should give you output like this :
 
-![First move in console](readme_images/first_move_in_console.png)
-
-
+<p>
+  <img src="readme_images/first_move_in_console.png" width="343" height="288">
+</p>
 
 ## Development tools 
 
@@ -66,6 +66,22 @@ To see visualisation of the game set DRAW_BOARD variable before launch any singl
 
 ```DRAW_BOARD=true rspec spec/games/fools_mate_spec.rb```
 
-![Fools mate game screen 1](readme_images/fools_mate_1.png)
+<p>
+  <img src="readme_images/fools_mate_1.png" width="213" height="439">
+</p>
+<p>
+  <img src="readme_images/fools_mate_2.png" width="213" height="518">
+</p>
 
-![Fools mate game screen 2](readme_images/fools_mate_2.png)
+
+## API documentation
+
+ Open html documentation with : ```open  docs/api.html```
+ 
+ To generate it after changes : 
+
+ 1. install npm like : ```brew install node```
+ 2. install raml2html : ```npm i -g raml2html```
+ 3. Change folder to docs : ```cd docs```
+ 4. Generate API documentation with : ```./regenerate.sh```
+ 5. Open documentation in browser with : ```open api.html```

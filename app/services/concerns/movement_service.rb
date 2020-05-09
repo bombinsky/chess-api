@@ -6,8 +6,8 @@ module MovementService
 
   def initialize(game, from, to)
     @game = game
-    @from = from
-    @to = to
+    @from = from.to_sym
+    @to = to.to_sym
   end
 
   private

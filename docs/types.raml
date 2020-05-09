@@ -1,0 +1,38 @@
+create_move_request:
+  properties:
+    from:
+      type: string
+      required: true
+    to:
+      type: string
+      required: true
+
+chessman:
+  properties:
+    type:
+      type: string
+      required: true
+    color:
+      type: string
+      required: true
+
+move:
+  properties:
+    created_at:
+      type: datetime
+      format: iso8601
+      required: true
+    from:
+      type: string
+      required: true
+    to:
+      type: string
+      required: true
+    captured:
+      type: string
+      required: false
+    special_type:
+      type: string
+      required: false
+    chessman:
+      type: chessman

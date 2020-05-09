@@ -1,0 +1,29 @@
+description: |
+  Moves resource
+post:
+  description: |
+    Creates move in specific game
+  body:
+    application/json:
+      properties:
+        move:
+          type: create_move_request
+          required: true
+      example: !include ../../examples/moves/create/request.json
+  responses:
+    201:
+      description: Successfull creation
+      body:
+        application/json:
+          properties:
+            move:
+              type: move
+              required: true
+          example: !include ../../examples/moves/create/response.json
+    404:
+      description: Game not found
+    422:
+      description: Wrong move - invalid or insufficient params
+      body:
+        application/json:
+          example: !include ../../examples/moves/create/errors.json

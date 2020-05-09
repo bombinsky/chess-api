@@ -43,6 +43,7 @@ Style/MixinUsage:
 RSpec/DescribeClass:
   Exclude:
     - spec/games/*
+    - spec/requests/*
 
 RSpec/NestedGroups:
   Max: 5

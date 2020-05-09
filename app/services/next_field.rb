@@ -20,11 +20,11 @@ class NextField
   end
 
   def next_field_heading_n
-    "#{ current_col }#{ next_row }".to_sym
+    "#{ current_col }#{ current_row.next }".to_sym
   end
 
   def next_field_heading_s
-    "#{ current_col }#{ previous_row }".to_sym
+    "#{ current_col }#{ current_row.pred }".to_sym
   end
 
   def next_field_heading_e
@@ -36,19 +36,19 @@ class NextField
   end
 
   def next_field_heading_ne
-    "#{ next_col }#{ next_row }".to_sym
+    "#{ next_col }#{ current_row.next }".to_sym
   end
 
   def next_field_heading_nw
-    "#{ previous_col }#{ next_row }".to_sym
+    "#{ previous_col }#{ current_row.next }".to_sym
   end
 
   def next_field_heading_se
-    "#{ next_col }#{ previous_row }".to_sym
+    "#{ next_col }#{ current_row.pred }".to_sym
   end
 
   def next_field_heading_sw
-    "#{ previous_col }#{ previous_row }".to_sym
+    "#{ previous_col }#{ current_row.pred }".to_sym
   end
 
   def current_col
@@ -65,13 +65,5 @@ class NextField
 
   def current_row
     field.to_s.last.to_i
-  end
-
-  def previous_row
-    current_row.pred
-  end
-
-  def next_row
-    current_row.next
   end
 end
