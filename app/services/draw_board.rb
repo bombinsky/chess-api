@@ -2,7 +2,7 @@
 
 # Service object that draws board in console just for debugging purposes
 class DrawBoard
-  BACKGROUNDS = %i[light_black white].freeze
+  BACKGROUNDS = %i[white light_black].freeze
 
   CHESSMEN = {
     white: { king: '♔', queen: '♕', rook: '♖', bishop: '♗', knight: '♘', pawn: '♙' },
