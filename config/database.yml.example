@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  encoding: unicode
+  host: localhost
+  username: username
+  password:
+
+development:
+  <<: *default
+  database: chess-api_development
+
+test:
+  <<: *default
+  database: chess-api_test

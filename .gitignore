@@ -7,10 +7,12 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-/db/*.sqlite3-*
+# Ignore local configuration
+config/database.yml
+
+# Ignore local tools
+.idea
+.rvmrc
 
 # Ignore all logfiles and tempfiles.
 /log/*

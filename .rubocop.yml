@@ -1,0 +1,87 @@
+require:
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.6
+  Exclude:
+    - db/**/**/*
+    - tmp/**/*
+
+Metrics/BlockLength:
+  Exclude:
+    - lib/tasks/**/*
+    - spec/**/*
+
+Style/FormatStringToken:
+  Exclude:
+    - spec/factories/**
+    - app/loaders/**/**/*
+
+Metrics/ParameterLists:
+  Max: 6
+
+Style/SymbolArray:
+  Exclude:
+    - lib/tasks/**/*
+    - app/controllers/**/**/*
+    - config/routes.rb
+
+Style/ExpandPathArguments:
+  Exclude:
+    - bin/*
+    - spec/rails_helper.rb
+    - test/test_helper.rb
+
+Style/BlockComments:
+  Exclude:
+    - spec/spec_helper.rb
+
+Style/MixinUsage:
+  Exclude:
+    - bin/*
+
+RSpec/DescribeClass:
+  Exclude:
+    - spec/games/*
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/LeadingSubject:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Layout/SpaceInsideStringInterpolation:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true

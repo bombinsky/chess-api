@@ -1,0 +1,5 @@
+**/db/**/*
+**/bin/**/*
+**/spec/**/*
+**/lib/tasks/**/*
+**/config/environments/*

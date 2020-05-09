@@ -1,0 +1,8 @@
+detectors:
+  TooManyConstants:
+    exclude:
+      - 'Movement'
+  RepeatedConditional:
+    exclude:
+      - 'King'
+      - 'Pawn'
