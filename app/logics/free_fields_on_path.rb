@@ -18,6 +18,6 @@ class FreeFieldsOnPath
   private
 
   def movement_possible?(field)
-    field.present? && board.public_send(field).blank?
+    field.present? && !chessman_at(field)
   end
 end

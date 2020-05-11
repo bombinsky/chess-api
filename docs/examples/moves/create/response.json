@@ -6,10 +6,6 @@
     "to":"A7",
     "captured":"A7",
     "special_type":null,
-    "chessman":
-      {
-        "type":"Rook",
-        "color":"white"
-      }
+    "chessman": "Q"
   }
 }

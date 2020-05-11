@@ -21,6 +21,6 @@ module ExceptionsHandling
   end
 
   def wrong_move(exception)
-    render json: { errors: [exception.message] }, status: 422
+    render json: { errors: { move: [exception.message] } }, status: :unprocessable_entity
   end
 end

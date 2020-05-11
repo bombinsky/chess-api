@@ -14,9 +14,10 @@ module FieldService
   attr_reader :game, :field
 
   delegate :board, to: :game
+  delegate :chessman_at, to: :board
 
   def chessman
-    @chessman ||= board.public_send field.to_sym
+    @chessman ||= chessman_at(field)
   end
 
   def special_movements_fields(movements)

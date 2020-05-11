@@ -15,9 +15,10 @@ module VectorService
   attr_reader :game, :from, :movement
 
   delegate :board, to: :game
+  delegate :chessman_at, to: :board
 
   def chessman
-    @chessman ||= board.public_send from
+    @chessman ||= chessman_at(from)
   end
 
   def pass_to_final_field

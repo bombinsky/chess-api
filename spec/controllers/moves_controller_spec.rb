@@ -1,58 +1,42 @@
 # frozen_string_literal: true
 
 describe MovesController do
-  let(:board) { create :board, :white_rook_protect_king }
-  let(:game_id) { board.game.id }
-  let(:params) { { move: { from: from, to: to }, game_id: game_id } }
-  let(:parsed_body_of_response) { JSON.parse(response.body) }
-  let(:from) { :A1 }
-  let(:to) { :A7 }
-
   describe '#create' do
+    let(:board) { create :board, :white_rook_protect_king }
+    let(:game_id) { board.game.id }
+    let(:from) { :A1 }
+    let(:to) { :A7 }
+    let(:params) do
+      {
+        move: { from: from, to: to },
+        game_id: game_id
+      }
+    end
+
     before { post :create, params: params, as: :json }
 
-    context 'when correct move' do
-      it 'responds with status code 201' do
-        expect(response.code).to eq '201'
-      end
+    it_behaves_like 'successful response', :created
 
-      it 'responds with proper content type' do
-        expect(response.content_type).to eq 'application/json; charset=utf-8'
-      end
-
-      it 'returns just create move with proper serializer' do
-        expect(parsed_body_of_response).to serialize_object(Move.last).with(MoveSerializer).using_root_key(:move)
-      end
+    it 'returns just create move with proper serializer' do
+      expect(parsed_body_of_response).to serialize_object(Move.last).with(MoveSerializer).using_root_key(:move)
     end
 
     context 'when incorrect move' do
       let(:to) { :H8 }
 
-      it { is_expected.to respond_with :unprocessable_entity }
-
-      it 'returns errors including incorrect move info' do
-        expect(parsed_body_of_response['errors']).to include 'incorrect move'
-      end
+      it_behaves_like 'not successful response', :unprocessable_entity, 'incorrect move', :move
     end
 
     context 'when incorrect game id' do
-      let(:game_id) { 987_654 }
+      let(:game_id) { 999 }
 
-      it { is_expected.to respond_with :not_found }
-
-      it 'returns errors including info about not found game' do
-        expect(parsed_body_of_response['errors'].first).to include "Couldn't find Game with 'id'=#{ game_id }"
-      end
+      it_behaves_like 'not successful response', :not_found, "Couldn't find Game with 'id'=999"
     end
 
     context 'when any required param is blank' do
       let(:from) { nil }
 
-      it { is_expected.to respond_with :unprocessable_entity }
-
-      it 'returns info about missing param' do
-        expect(parsed_body_of_response['errors']).to include 'param is missing or the value is empty: from'
-      end
+      it_behaves_like 'not successful response', :unprocessable_entity, "can't be blank", :from
     end
   end
 end

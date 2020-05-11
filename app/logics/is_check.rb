@@ -19,6 +19,6 @@ class IsCheck
   end
 
   def opponents
-    @opponents ||= board.public_send chessman.opponent_color
+    @opponents ||= board.opponents(chessman.color)
   end
 end

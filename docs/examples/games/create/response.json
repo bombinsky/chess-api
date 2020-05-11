@@ -1,0 +1,30 @@
+{
+  "game": {
+    "id": 1,
+    "created_at": "2020-05-11T16:05:03.461Z",
+    "mate": true,
+    "stalemate": true,
+    "whose_round?": "white",
+    "creator": {"id": 1, "nickname": "nickname-11"},
+    "white_player": {"id": 1, "nickname": "nickname-11"},
+    "black_player": {"id": 2, "nickname": "nickname-12"},
+    "board": {
+      "chessmen":
+        { "A8": "r", "B8": "k", "C8": "b", "D8": "q", "E8": "k", "F8": "b", "G8": "k", "H8": "r",
+          "A7": "p", "B7": "p", "C7": "p", "D7": "p", "E7": "p", "F7": "p", "G7": "p", "H7": "p",
+          "A2": "P", "B2": "P", "C2": "P", "D2": "P", "E2": "P", "F2": "P", "G2": "P", "H2": "P",
+          "A1": "R", "B1": "K", "C1": "B", "D1": "Q", "E1": "K", "F1": "B", "G1": "K", "H1": "R"
+        }
+    },
+    "moves": [
+      {
+        "created_at":"2020-05-09T21:16:33.909Z",
+        "from":"A1",
+        "to":"A7",
+        "captured":"A7",
+        "special_type":null,
+        "chessman": "Q"
+      }
+    ]
+  }
+}

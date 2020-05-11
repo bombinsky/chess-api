@@ -13,7 +13,7 @@ class IsCapture
   alias attacker chessman
 
   def attacked
-    @attacked ||= board.public_send to
+    @attacked ||= chessman_at(to)
   end
 
   def opponents?

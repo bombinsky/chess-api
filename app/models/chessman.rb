@@ -6,6 +6,11 @@ class Chessman < ApplicationRecord
   BLACK = 'black'
   COLORS = [WHITE, BLACK].freeze
 
+  SYMBOLS = {
+    white: { Pawn: :P, King: :K, Queen: :Q, Bishop: :B, Knight: :K, Rook: :R },
+    black: { Pawn: :p, King: :k, Queen: :q, Bishop: :b, Knight: :k, Rook: :r }
+  }.freeze
+
   validates :type, presence: true
   validates :color, presence: true, inclusion: { in: COLORS }
 

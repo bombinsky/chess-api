@@ -24,9 +24,17 @@ class Board < ApplicationRecord
 
   validates_presence_of :game, on: :create
 
+  def chessman_at(field)
+    send(field) if field && FIELDS.include?(field.to_sym)
+  end
+
+  def opponents(color)
+    color == Chessman::WHITE ? black : white
+  end
+
   def chessmen
     FIELDS.map do |field|
-      chessman = public_send(field)
+      chessman = chessman_at(field)
       { field => chessman } if chessman.present?
     end.compact
   end

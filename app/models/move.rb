@@ -8,8 +8,8 @@ class Move < ApplicationRecord
   belongs_to :chessman
   belongs_to :taken, class_name: 'Chessman', optional: true
 
-  validates :to, presence: true
-  validates :from, presence: true, unless: :promotion?
+  validates :to, presence: true, inclusion: Board::FIELDS.map(&:to_s)
+  validates :from, presence: true, inclusion: Board::FIELDS.map(&:to_s), unless: :promotion?
 
   def to_row
     to.last.to_i

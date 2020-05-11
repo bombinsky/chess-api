@@ -50,7 +50,7 @@ class LoadChessmen
     create_chessman(Rook, color)
   end
 
-  def create_chessman(class_name, color)
-    class_name.create!(color: color)
+  def create_chessman(klass, color)
+    klass.create!(color: color, symbol: Chessman::SYMBOLS[color.to_sym][klass.name.to_sym])
   end
 end

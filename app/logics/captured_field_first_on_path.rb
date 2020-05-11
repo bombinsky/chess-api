@@ -27,14 +27,14 @@ class CapturedFieldFirstOnPath
   end
 
   def attacked
-    board.public_send examined_field
+    chessman_at(examined_field)
   end
 
-  def opponents?
+  def opponent?
     chessman.color != attacked.color
   end
 
   def capture?
-    examined_field.present? && attacked.present? && opponents?
+    examined_field.present? && attacked.present? && opponent?
   end
 end

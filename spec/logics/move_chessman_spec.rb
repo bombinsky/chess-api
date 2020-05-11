@@ -97,7 +97,7 @@ describe MoveChessman do
       let(:board) { create :board, :white_promotion_with_mate }
       let(:last_move) { create :move, :black_pawn_first_move, game: game }
 
-      before { create :queen, color: Chessman::WHITE }
+      before { create :white_queen }
 
       it 'promotes pawn to queen' do
         service_call

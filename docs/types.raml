@@ -7,15 +7,6 @@ create_move_request:
       type: string
       required: true
 
-chessman:
-  properties:
-    type:
-      type: string
-      required: true
-    color:
-      type: string
-      required: true
-
 move:
   properties:
     created_at:
@@ -35,4 +26,68 @@ move:
       type: string
       required: false
     chessman:
-      type: chessman
+      type: string
+      required: false
+
+user:
+  properties:
+    id:
+      type: integer
+      required: true
+    nickname:
+      type: string
+      required: false
+
+board:
+  properties:
+    A8:
+      type: string
+      required: false
+    H1:
+      type: string
+      required: false
+
+create_game_request:
+  properties:
+    white_player_id:
+      type: integer
+      required: true
+    black_player_id:
+      type: integer
+      required: true
+
+game:
+  properties:
+    id:
+      type: integer
+      required: true
+    created_at:
+      type: datetime
+      format: iso8601
+      required: true
+    mate:
+      type: boolean
+      required: true
+    stalemate:
+      type: boolean
+      required: true
+    whose_round:
+      type: string
+      required: true
+    creator:
+      type: user
+      required: true
+    white_player:
+      type: user
+      required: true
+    black_player:
+      type: user
+      required: true
+    board:
+      type: board
+      required: true
+    moves:
+      type: array
+      required: true
+      items:
+        type: move

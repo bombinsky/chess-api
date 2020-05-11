@@ -9,19 +9,18 @@ class CreateGame
   end
 
   def call
-    initialize_game.tap do
+    game.tap do |game|
       setup_chessmen
       game.save!
     end
-    game
   end
 
   private
 
-  attr_reader :creator, :white_player, :black_player, :game
+  attr_reader :creator, :white_player, :black_player
 
-  def initialize_game
-    @game = Game.new new_game_attributes
+  def game
+    @game ||= Game.new(new_game_attributes)
   end
 
   def new_game_attributes

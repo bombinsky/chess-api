@@ -2,12 +2,12 @@
 
 # Serializes board
 class BoardSerializer < ActiveModel::Serializer
-  attributes Board::FIELDS
+  attributes :chessmen
 
-  Board::FIELDS.each do |field|
-    define_method field do
-      chessmen = object.public_send(field)
-      ChessmanSerializer.new(chessmen) if chessmen
-    end
+  def chessmen
+    Board::FIELDS.each_with_object({}) do |field, result|
+      chessman = object.chessman_at(field)
+      result[field] = chessman.symbol if chessman.present?
+    end.compact
   end
 end

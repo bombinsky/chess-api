@@ -10,18 +10,16 @@ module CastlePossible
 
   private
 
+  delegate :chessman_at, :opponents, to: :board
+
   def king_path_not_attacked?
     (king_path & opponent_moves).blank?
   end
 
   def opponent_moves
-    opponents.reduce([]) do |res, opponent|
+    opponents(king.color).reduce([]) do |res, opponent|
       res << AvailableMoves.new(game, opponent.keys.first).call
     end
-  end
-
-  def opponents
-    @opponents ||= board.public_send king.opponent_color
   end
 
   def not_checked?
@@ -37,11 +35,11 @@ module CastlePossible
   end
 
   def king
-    @king ||= board.public_send King.new(color: color).start_field
+    @king ||= chessman_at(King.new(color: color).start_field)
   end
 
   def rook
-    @rook ||= board.public_send send("#{ color }_rook_field".to_sym)
+    @rook ||= chessman_at(send("#{ color }_rook_field".to_sym))
   end
 
   def rook_path
@@ -49,10 +47,10 @@ module CastlePossible
   end
 
   def color
-    @color ||= board.public_send(field).color
+    @color ||= chessman_at(field).color
   end
 
   def rook_path_is_free?
-    rook_path.all? { |field| board.public_send(field).blank? }
+    rook_path.all? { |field| !chessman_at(field) }
   end
 end

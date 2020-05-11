@@ -5,7 +5,7 @@ describe AvailableSpecialCaptures do
     subject(:service_call) { described_class.new(game, field).call }
 
     let(:game) { board.game }
-    let(:chessman) { build :pawn, color: Chessman::BLACK }
+    let(:chessman) { build :black_pawn }
     let(:board) { build :board, :white_beating_in_pass }
     let(:field) { :C5 }
 

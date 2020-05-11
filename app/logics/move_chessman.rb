@@ -36,7 +36,7 @@ class MoveChessman
   end
 
   def validate_move
-    ValidateMove.new(game, from, to).call
+    CheckMove.new(game, from, to).call
   end
 
   def castle?

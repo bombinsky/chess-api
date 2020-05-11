@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Service object that checks if move is possible
-class ValidateMove
+class CheckMove
   include MovementService
 
   def call

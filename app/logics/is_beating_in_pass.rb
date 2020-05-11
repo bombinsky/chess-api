@@ -16,7 +16,7 @@ class IsBeatingInPass
   end
 
   def to_field_is_free?
-    board.public_send(to).blank?
+    !chessman_at(to)
   end
 
   def slantwise?

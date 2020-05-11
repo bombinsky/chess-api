@@ -2,7 +2,9 @@
 
 # Serializes move
 class MoveSerializer < ActiveModel::Serializer
-  attributes :created_at, :from, :to, :captured, :special_type
+  attributes :created_at, :from, :to, :captured, :special_type, :chessman
 
-  has_one :chessman
+  def chessman
+    object.chessman.symbol
+  end
 end

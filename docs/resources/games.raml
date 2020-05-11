@@ -1,3 +1,28 @@
+description: |
+  Games resource
+post:
+  description: |
+    Creates game
+  body:
+    application/json:
+      properties:
+        game:
+          type: create_game_request
+          required: true
+      example: !include ../examples/games/create/request.json
+  responses:
+    201:
+      description: Successfull creation
+      body:
+        application/json:
+          properties:
+            game:
+              type: game
+              required: true
+          example: !include ../examples/games/create/response.json
+    404:
+      description: White or black player not found
+
 /{game_id}:
 
   /moves: !include ./games/moves.raml

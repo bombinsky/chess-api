@@ -73,7 +73,7 @@ class DrawBoard
   end
 
   def chessman
-    board.public_send "#{ Board::COLS.to_a[col_index] }#{ Board::ROWS.to_a[row_index] }".to_sym
+    board.chessman_at("#{ Board::COLS.to_a[col_index] }#{ Board::ROWS.to_a[row_index] }".to_sym)
   end
 
   def background

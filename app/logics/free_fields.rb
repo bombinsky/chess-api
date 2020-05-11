@@ -27,11 +27,11 @@ class FreeFields
   end
 
   def final_field_free?
-    final_field.present? && board.public_send(final_field).blank?
+    final_field.present? && !chessman_at(final_field)
   end
 
   def next_field_free?
-    next_field.present? && board.public_send(next_field).blank?
+    next_field.present? && !chessman_at(next_field)
   end
 
   def next_field

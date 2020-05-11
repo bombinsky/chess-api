@@ -5,23 +5,17 @@ class MovesController < ApplicationController
   include ExceptionsHandling
 
   def create
-    render json: created_move, status: :created
+    respond_with created_move, status: :created
   end
 
   private
 
   def created_move
-    MoveChessman.new(game, create_params[:from], create_params[:to]).call
+    CreateMove.new(game, create_params[:from], create_params[:to]).call
   end
 
   def create_params
-    permitted_create_params.require(:from)
-    permitted_create_params.require(:to)
-    permitted_create_params
-  end
-
-  def permitted_create_params
-    @permitted_create_params ||= params.require(:move).permit(:from, :to)
+    @create_params ||= params.require(:move).permit(:from, :to)
   end
 
   def game

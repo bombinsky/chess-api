@@ -36,7 +36,7 @@ class PerformCastle
   end
 
   def update_board
-    board.update! board_attributes
+    board.update!(board_attributes)
   end
 
   def board_attributes
@@ -49,7 +49,7 @@ class PerformCastle
   end
 
   def rook
-    @rook ||= board.public_send rook_from
+    @rook ||= chessman_at(rook_from)
   end
 
   def rook_from

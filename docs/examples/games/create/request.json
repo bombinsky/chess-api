@@ -1,0 +1,6 @@
+{
+  "game": {
+    "white_player_id": 123,
+    "black_player_id": 321
+  }
+}
