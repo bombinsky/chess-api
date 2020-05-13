@@ -29,12 +29,12 @@ describe PerformBeatingInPass do
 
       let(:move) { service_call }
 
-      it 'saves taken_id' do
-        expect(move.taken_id).to be_present
+      it 'saves taken' do
+        expect(move.taken).to be_present
       end
 
-      it 'saves taken_id different than chessman_id' do
-        expect(move.taken_id).not_to eq move.chessman_id
+      it 'saves taken different than chessman' do
+        expect(move.taken).not_to eq move.chessman
       end
 
       it 'saves captured' do

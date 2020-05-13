@@ -14,10 +14,8 @@ class Game < ApplicationRecord
 
   delegate :check?, to: :last_move, allow_nil: true
 
-  Board::COLS.each do |col|
-    Board::ROWS.each do |row|
-      delegate "#{ col }#{ row }_chessman".to_sym, to: :board
-    end
+  def next_player
+    send(:"#{ whose_round? }_player")
   end
 
   def whose_round?

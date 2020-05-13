@@ -14,8 +14,8 @@ class PerformMove
   def move_attributes
     {
       captured: captured,
-      taken_id: taken_id,
-      chessman_id: chessman.id,
+      taken: taken,
+      chessman: chessman,
       from: from,
       to: to,
       check: check?
@@ -23,18 +23,16 @@ class PerformMove
   end
 
   def update_board
-    board.update! board_attributes
+    board.put_at(to, chessman)
+    board.clear_at(from)
+    board.save!
   end
 
-  def board_attributes
-    { "#{ to }_id" => chessman.id, "#{ from }_id" => nil }
-  end
-
-  def set_taken_id
-    @taken_id = board.public_send "#{ to }_id".to_sym
+  def set_taken
+    @taken = board.chessman_at(to)
   end
 
   def captured
-    to if taken_id
+    to if taken
   end
 end

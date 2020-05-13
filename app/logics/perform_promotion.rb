@@ -16,7 +16,7 @@ class PerformPromotion
 
   def move_attributes
     {
-      chessman_id: chessman.id,
+      chessman: chessman,
       special_type: Move.special_types[:promotion],
       from: from,
       to: to
@@ -26,7 +26,7 @@ class PerformPromotion
   def promoted_move_attributes
     {
       captured: captured,
-      taken_id: taken_id,
+      taken: taken,
       chessman_id: promoted.id,
       special_type: Move.special_types[:promotion],
       to: to,
@@ -35,19 +35,17 @@ class PerformPromotion
   end
 
   def update_board
-    board.update! board_attributes
+    board.put_at(to, promoted)
+    board.clear_at(from)
+    board.save!
   end
 
-  def board_attributes
-    Hash["#{ to }_id" => promoted.id, "#{ from }_id" => nil]
-  end
-
-  def set_taken_id
-    @taken_id = board.public_send "#{ to }_id".to_sym
+  def set_taken
+    @taken = board.chessman_at(to)
   end
 
   def captured
-    to if taken_id
+    to if taken
   end
 
   def promoted

@@ -11,8 +11,8 @@ describe PerformPromotion do
       let(:from) { :C7 }
       let(:to) { :C8 }
 
-      it 'does not save taken_id' do
-        expect(service_call.taken_id).to be_nil
+      it 'does not save taken' do
+        expect(service_call.taken).to be_nil
       end
 
       it 'does not save captured' do
@@ -41,12 +41,12 @@ describe PerformPromotion do
       let(:from) { :C7 }
       let(:to) { :B8 }
 
-      it 'saves taken_id' do
-        expect(service_call.taken_id).to be_present
+      it 'saves taken' do
+        expect(service_call.taken).to be_present
       end
 
-      it 'saves taken_id different than chessman_id' do
-        expect(service_call.taken_id).not_to eq service_call.chessman_id
+      it 'saves taken different than chessman' do
+        expect(service_call.taken).not_to eq service_call.chessman
       end
 
       it 'saves captured' do

@@ -90,8 +90,6 @@ ActiveRecord::Schema.define(version: 2016_10_19_120911) do
     t.string "type", null: false
     t.string "color", null: false
     t.string "symbol", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "games", force: :cascade do |t|

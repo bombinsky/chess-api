@@ -19,6 +19,6 @@ shared_examples 'beating in pass' do
 
   it 'saves capture in history' do
     subject
-    expect(Move.last.taken_id).not_to be_nil
+    expect(Move.last.taken).not_to be_nil
   end
 end

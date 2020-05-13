@@ -28,6 +28,14 @@ class Board < ApplicationRecord
     send(field) if field && FIELDS.include?(field.to_sym)
   end
 
+  def put_at(field, chessman)
+    send("#{ field }=".to_sym, chessman)
+  end
+
+  def clear_at(field)
+    send("#{ field }=".to_sym, nil)
+  end
+
   def opponents(color)
     color == Chessman::WHITE ? black : white
   end

@@ -5,7 +5,7 @@ module PerformerService
   extend ActiveSupport::Concern
 
   def call
-    set_taken_id # memorise taken id have to be set before move
+    set_taken # memorise taken
     Board.transaction do
       update_board
       create_history
@@ -15,7 +15,7 @@ module PerformerService
 
   private
 
-  attr_reader :taken_id
+  attr_reader :taken
 
   def check?
     IsCheck.new(game, opponent_king_field).call

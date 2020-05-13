@@ -18,7 +18,7 @@ class PerformCastle
 
   def king_move_attributes
     {
-      chessman_id: king.id,
+      chessman: king,
       from: from,
       to: to,
       special_type: Move.special_types[:castle]
@@ -27,7 +27,7 @@ class PerformCastle
 
   def rook_move_attributes
     {
-      chessman_id: rook.id,
+      chessman: rook,
       from: rook_from,
       to: rook_to,
       check: check?,
@@ -40,12 +40,7 @@ class PerformCastle
   end
 
   def board_attributes
-    {
-      "#{ to }_id" => king.id,
-      "#{ from }_id" => nil,
-      "#{ rook_to }_id" => rook.id,
-      "#{ rook_from }_id" => nil
-    }
+    { to => king, rook_to => rook, from => nil, rook_from => nil }
   end
 
   def rook
@@ -60,7 +55,7 @@ class PerformCastle
     Hash[G1: :F1, G8: :F8, C1: :D1, C8: :D8][to]
   end
 
-  def set_taken_id
+  def set_taken
     nil
   end
 end

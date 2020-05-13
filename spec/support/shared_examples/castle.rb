@@ -21,8 +21,8 @@ shared_examples 'castle' do
     expect { subject }.to change(Move, :count).by 2
   end
 
-  it 'does not saves taken_id' do
-    expect(subject.taken_id).to be_nil
+  it 'does not saves taken' do
+    expect(subject.taken).to be_nil
   end
 
   it 'does not saves captured' do

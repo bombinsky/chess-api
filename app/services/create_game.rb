@@ -19,6 +19,9 @@ class CreateGame
 
   attr_reader :creator, :white_player, :black_player
 
+  delegate :first, :last, to: Board::ROWS
+  delegate :board, to: :game
+
   def game
     @game ||= Game.new(new_game_attributes)
   end
@@ -33,13 +36,11 @@ class CreateGame
   end
 
   def setup_chessmen
-    [1, 2, 7, 8].each { |no| setup_row no }
+    [first, first.next, last.pred, last].each { |number| setup_row(number) }
   end
 
   def setup_row(row_number)
-    Board::COLS.each do |col|
-      game.board.public_send "#{ col }#{ row_number }_id=".to_sym, chessmen.shift.id
-    end
+    Board::COLS.each { |col_number| board.put_at("#{ col_number }#{ row_number }", chessmen.shift) }
   end
 
   def chessmen

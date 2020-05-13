@@ -7,6 +7,8 @@ describe 'Create move' do
   let(:parsed_body_of_response) { JSON.parse(response.body) }
 
   before do
+    authenticate(board.game.next_player)
+
     post game_moves_path(game_id: board.game.id), params: { move: { from: from, to: to } }, as: :json
   end
 

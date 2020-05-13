@@ -1,0 +1,1 @@
+UseScopeAccessCheck: { ignored_files: ['app/controllers/moves_controller.rb'] }

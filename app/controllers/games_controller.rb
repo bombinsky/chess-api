@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-# Moves controller
+# Games controller
 class GamesController < ApplicationController
   include ExceptionsHandling
+  include Responder
 
   def create
     respond_with created_game, status: :created

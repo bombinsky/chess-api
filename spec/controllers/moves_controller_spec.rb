@@ -6,6 +6,8 @@ describe MovesController do
     let(:game_id) { board.game.id }
     let(:from) { :A1 }
     let(:to) { :A7 }
+    let(:user) { board.game.white_player }
+
     let(:params) do
       {
         move: { from: from, to: to },
@@ -13,12 +15,22 @@ describe MovesController do
       }
     end
 
-    before { post :create, params: params, as: :json }
+    before do
+      authenticate(user)
+
+      post :create, params: params, as: :json
+    end
 
     it_behaves_like 'successful response', :created
 
     it 'returns just create move with proper serializer' do
       expect(parsed_body_of_response).to serialize_object(Move.last).with(MoveSerializer).using_root_key(:move)
+    end
+
+    context 'when wrong player tries to perform move' do
+      let(:user) { board.game.black_player }
+
+      it_behaves_like 'not successful response', :unprocessable_entity, 'You are not current player in this game', :move
     end
 
     context 'when incorrect move' do

@@ -6,34 +6,21 @@ module ProbeService
 
   private
 
-  attr_reader :taken_id
+  attr_reader :taken
 
   def move_chessman
-    memorize_taken_id
-    board.public_send foreign_key_to_setter, chessman.id
-    board.public_send foreign_key_from_setter, nil
+    memorize_taken
+    board.put_at(to, chessman)
+    board.clear_at(from)
   end
 
   def put_chessman_back
-    board.public_send foreign_key_to_setter, taken_id
-    board.public_send foreign_key_from_setter, chessman.id
+    board.put_at(to, taken)
+    board.put_at(from, chessman)
   end
 
-  def memorize_taken_id
-    @taken_id = nil
-    @taken_id = board.public_send(foreign_key_to_getter) if to.present?
-  end
-
-  def foreign_key_from_setter
-    "#{ from }_id=".to_sym
-  end
-
-  def foreign_key_to_setter
-    "#{ to }_id=".to_sym
-  end
-
-  def foreign_key_to_getter
-    "#{ to }_id".to_sym
+  def memorize_taken
+    @taken = board.chessman_at(to) if to.present?
   end
 
   def king_field

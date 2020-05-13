@@ -4,8 +4,6 @@ class CreateChessmen < ActiveRecord::Migration[6.0]
       t.string :type, null: false
       t.string :color, null: false
       t.string :symbol, null: false
-
-      t.timestamps
     end
   end
 end

@@ -13,6 +13,7 @@ class Chessman < ApplicationRecord
 
   validates :type, presence: true
   validates :color, presence: true, inclusion: { in: COLORS }
+  validates :symbol, presence: true, inclusion: { in: %w[P K Q B K R N p k q b k r n] }
 
   def movements
     raise NotImplementedError, 'Implement public method in a child class'
