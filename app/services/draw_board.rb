@@ -4,10 +4,7 @@
 class DrawBoard
   BACKGROUNDS = %i[white light_black].freeze
 
-  CHESSMEN = {
-    white: { king: '♔', queen: '♕', rook: '♖', bishop: '♗', knight: '♘', pawn: '♙' },
-    black: { king: '♚', queen: '♛', rook: '♜', bishop: '♝', knight: '♞', pawn: '♟' }
-  }.freeze
+  CHESSMEN = { king: '♚', queen: '♛', rook: '♜', bishop: '♝', knight: '♞', pawn: '♟' }.freeze
 
   def initialize(board)
     @board = board
@@ -69,7 +66,7 @@ class DrawBoard
   end
 
   def chessman_chr
-    CHESSMEN[chessman.color.to_sym][chessman.type.underscore.to_sym]
+    CHESSMEN[chessman.type.underscore.to_sym]
   end
 
   def chessman
